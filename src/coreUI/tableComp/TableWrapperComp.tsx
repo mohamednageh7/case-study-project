@@ -16,9 +16,11 @@ import { rows } from './fixedData';
 import { Order, Data } from './types';
 import { stableSort, getComparator } from './utils';
 
-type Props = {};
+type Props = {
+  filterCompo?: React.ReactNode;
+};
 
-const TableWrapperComp = (props: Props) => {
+const TableWrapperComp = ({ filterCompo }: Props) => {
   const [order, setOrder] = React.useState<Order>('asc');
   const [orderBy, setOrderBy] = React.useState<keyof Data>('calories');
   const [selected, setSelected] = React.useState<readonly number[]>([]);
@@ -92,7 +94,10 @@ const TableWrapperComp = (props: Props) => {
   return (
     <Box sx={{ width: '100%' }}>
       <Paper sx={{ width: '100%', mb: 2 }}>
-        <EnhancedTableToolbar numSelected={selected.length} />
+        <EnhancedTableToolbar
+          numSelected={selected.length}
+          filterCompo={filterCompo}
+        />
         <TableContainer>
           <Table
             sx={{ minWidth: 750 }}
@@ -123,20 +128,11 @@ const TableWrapperComp = (props: Props) => {
                     selected={isItemSelected}
                     sx={{ cursor: 'pointer' }}
                   >
-                    <TableCell padding="checkbox">
-                      <Checkbox
-                        color="primary"
-                        checked={isItemSelected}
-                        inputProps={{
-                          'aria-labelledby': labelId,
-                        }}
-                      />
-                    </TableCell>
                     <TableCell
                       component="th"
                       id={labelId}
                       scope="row"
-                      padding="none"
+                      padding="normal"
                     >
                       {row.name}
                     </TableCell>
@@ -169,10 +165,6 @@ const TableWrapperComp = (props: Props) => {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Paper>
-      <FormControlLabel
-        control={<Switch checked={dense} onChange={handleChangeDense} />}
-        label="Dense padding"
-      />
     </Box>
   );
 };

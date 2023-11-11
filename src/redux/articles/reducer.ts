@@ -1,8 +1,15 @@
-import { GET_ARTICLES, LOADING, FILTER_ARTICLES } from './types';
+import {
+  GET_ARTICLES,
+  GET_SOURCE,
+  LOADING,
+  SEARCH_ARTICLES,
+  STOP_LOADING,
+} from './types';
 
 const initialState: any = {
-  articles: false,
+  articles: [],
   loading: false,
+  source: null,
 };
 
 export default function articlesReducer(
@@ -16,12 +23,22 @@ export default function articlesReducer(
         ...state,
         articles: payload,
       };
+    case SEARCH_ARTICLES:
+      return {
+        ...state,
+        articles: payload,
+      };
+    case GET_SOURCE:
+      return {
+        ...state,
+        source: payload,
+      };
     case LOADING:
       return {
         ...state,
         loading: true,
       };
-    case FILTER_ARTICLES:
+    case STOP_LOADING:
       return {
         ...state,
         loading: false,

@@ -10,6 +10,8 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import Head from 'next/head';
 import '../src/styles/global.scss';
 import Navbar from '../src/components/navbarCom/Navbar';
+import { Provider } from 'react-redux';
+import store from '../src/redux/store';
 
 export const AppContext = createContext<any>({});
 
@@ -44,14 +46,16 @@ const MyApp = (props: AppProps) => {
         <meta name="viewport" content="initial-scale=1, width=device-width" />
         <title>Innoscripta Test</title>
       </Head>
-      <ThemeProvider theme={theme}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <CssBaseline />
-        <AppContext.Provider value={value}>
-          <Navbar />
-          <Component {...pageProps} />
-        </AppContext.Provider>
-      </ThemeProvider>
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+          <CssBaseline />
+          <AppContext.Provider value={value}>
+            {/* <Navbar /> */}
+            <Component {...pageProps} />
+          </AppContext.Provider>
+        </ThemeProvider>
+      </Provider>
     </>
   );
 };

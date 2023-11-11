@@ -1,22 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import CloseIcon from '@mui/icons-material/Close';
 import TextInputComp from '../../coreUI/textInputComp/TextInputComp';
+import { HomeContext } from './ArticlesWrapper';
+import SearchIcon from '@mui/icons-material/Search';
+import { isEmpty } from 'lodash';
 
 type Props = {};
 
 const SearchArticles = (props: Props) => {
+  const { search, handleSearchValue } = useContext(HomeContext);
   return (
     <TextInputComp
-      value={''}
-      handleChange={function (
-        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-      ): void {
-        throw new Error('Function not implemented.');
-      }}
-      handleCclickIcon={function (): void {
-        throw new Error('Function not implemented.');
-      }}
-      icon={<CloseIcon />}
+      value={search}
+      handleChange={handleSearchValue}
+      handleCclickIcon={() => handleSearchValue({ target: { value: '' } })}
+      icon={isEmpty(search) ? <SearchIcon /> : <CloseIcon />}
+      label="Search"
     />
   );
 };

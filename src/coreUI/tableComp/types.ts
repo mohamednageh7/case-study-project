@@ -1,3 +1,5 @@
+import React from 'react';
+
 export interface EnhancedTableProps {
   numSelected: number;
   onRequestSort: (
@@ -12,6 +14,7 @@ export interface EnhancedTableProps {
 
 export interface EnhancedTableToolbarProps {
   numSelected: number;
+  filterCompo?: React.ReactNode;
 }
 
 export interface HeadCell {

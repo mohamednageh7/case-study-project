@@ -18,3 +18,15 @@ Install it and run:
 npm install
 npm run dev
 ```
+
+## Run with docker
+
+```sh
+docker compose up --build
+```
+
+## Stop docker compose
+
+```sh
+docker compose down --remove-orphans --rmi "all"
+```

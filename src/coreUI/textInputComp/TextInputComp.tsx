@@ -12,7 +12,7 @@ interface Props {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => void;
   handleCclickIcon: () => void;
-  icon: React.ReactNode;
+  icon: React.ReactNode | null;
 }
 
 const TextInputComp = ({
