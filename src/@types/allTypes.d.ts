@@ -1,15 +1,2 @@
-declare module "react-virtualized"
-declare module '@emotion/cache'
-declare module 'next-i18next'
-
-
-
-
-
-
-
-
-
-
-
-
+declare module '@emotion/cache';
+declare module 'next-i18next';

@@ -9,7 +9,6 @@ import { createContext, useMemo, useState } from 'react';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Head from 'next/head';
 import '../src/styles/global.scss';
-import Navbar from '../src/components/navbarCom/Navbar';
 import { Provider } from 'react-redux';
 import store from '../src/redux/store';
 
@@ -51,7 +50,6 @@ const MyApp = (props: AppProps) => {
           {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
           <CssBaseline />
           <AppContext.Provider value={value}>
-            {/* <Navbar /> */}
             <Component {...pageProps} />
           </AppContext.Provider>
         </ThemeProvider>
