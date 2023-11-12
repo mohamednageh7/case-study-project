@@ -1,14 +1,16 @@
 import { Grid, Typography } from '@mui/material';
-import SelectInputComp from '../../coreUI/selectInputComp/SelectInputComp';
 import { useContext } from 'react';
-import { HomeContext } from './ArticlesWrapper';
 import { shallowEqual, useSelector } from 'react-redux';
 import { ArticlesSelector } from '../../redux/articles/selector';
-import { OptionsCategory } from './fixedData';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-
+import dynamic from 'next/dynamic';
+import { HomeContext } from './ArticlesWrapper';
+const SelectInputComp = dynamic(
+  () => import('../../coreUI/selectInputComp/SelectInputComp'),
+  { ssr: false }
+);
 type Props = {};
 
 const FIlterArticles = (props: Props) => {
@@ -17,7 +19,8 @@ const FIlterArticles = (props: Props) => {
     (state: any) => ArticlesSelector(state).source,
     shallowEqual
   );
-  const { dateFrom, dateTo, category, source } = filter;
+  const { from, to, source } = filter;
+
   return (
     <Grid
       item
@@ -42,7 +45,8 @@ const FIlterArticles = (props: Props) => {
           label="Source"
         />
       </Grid>
-      <Grid item md={3} xs={12}>
+      {/* The provided api not support filter by category */}
+      {/* <Grid item md={3} xs={12}>
         <SelectInputComp
           value={category}
           handleChange={handleFilterValue}
@@ -50,17 +54,19 @@ const FIlterArticles = (props: Props) => {
           name={'category'}
           label="Category"
         />
-      </Grid>
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <Grid item md={3} xs={12}>
+      </Grid> */}
+
+      <Grid item md={3} xs={12}>
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DatePicker
             label="From"
-            value={dateFrom}
-            onChange={(value) =>
+            value={from}
+            onChange={(value, context) =>
+              !context.validationError &&
               handleFilterValue({
                 target: {
                   value: value,
-                  name: 'From',
+                  name: 'from',
                 },
               })
             }
@@ -68,16 +74,19 @@ const FIlterArticles = (props: Props) => {
               width: '100%',
             }}
           />
-        </Grid>
-        <Grid item md={3} xs={12}>
+        </LocalizationProvider>
+      </Grid>
+      <Grid item md={3} xs={12}>
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DatePicker
             label="To"
-            value={dateTo}
-            onChange={(value) =>
+            value={to}
+            onChange={(value, context) =>
+              !context.validationError &&
               handleFilterValue({
                 target: {
                   value: value,
-                  name: 'To',
+                  name: 'to',
                 },
               })
             }
@@ -85,8 +94,8 @@ const FIlterArticles = (props: Props) => {
               width: '100%',
             }}
           />
-        </Grid>
-      </LocalizationProvider>
+        </LocalizationProvider>
+      </Grid>
     </Grid>
   );
 };

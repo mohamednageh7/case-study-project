@@ -35,10 +35,10 @@ const SelectInputComp = ({
           label={label}
           name={name}
         >
-          <MenuItem value={'none'}>None</MenuItem>
+          <MenuItem value={''}>None</MenuItem>
           {options?.map((items) => (
-            <MenuItem key={items.id} value={items.text}>
-              {items.value}
+            <MenuItem key={items.id} value={items.value}>
+              {items.text}
             </MenuItem>
           ))}
         </Select>

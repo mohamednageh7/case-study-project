@@ -4,6 +4,7 @@ export interface ArticlesReducer {
   loading: boolean;
   articles: any;
   source: { id: string | number; text: string; value: string }[] | null;
+  authors: { id: string | number; text: string; value: string }[] | null;
 }
 interface RootState {
   articles: ArticlesReducer;
@@ -17,6 +18,7 @@ export const ArticlesSelector = createSelector(
       loading: articlesData.loading,
       articles: articlesData.articles,
       source: articlesData.source,
+      authors: articlesData.authors,
     };
   }
 );

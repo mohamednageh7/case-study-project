@@ -11,7 +11,7 @@ interface Props {
   handleChange: (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => void;
-  handleCclickIcon: () => void;
+  handleClickIcon: () => void;
   icon: React.ReactNode | null;
 }
 
@@ -20,7 +20,7 @@ const TextInputComp = ({
   label = 'TextField',
   id = 'input-with-icon-textfield',
   handleChange,
-  handleCclickIcon,
+  handleClickIcon,
   icon,
 }: Props) => {
   const handleMouseDown = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -37,7 +37,7 @@ const TextInputComp = ({
           <InputAdornment position="start">
             <IconButton
               aria-label="toggle password visibility"
-              onClick={handleCclickIcon}
+              onClick={handleClickIcon}
               onMouseDown={handleMouseDown}
               edge="end"
             >

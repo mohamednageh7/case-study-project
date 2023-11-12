@@ -1,3 +1,4 @@
+import { ArticlesReducer } from './selector';
 import {
   GET_ARTICLES,
   GET_SOURCE,
@@ -6,10 +7,11 @@ import {
   STOP_LOADING,
 } from './types';
 
-const initialState: any = {
+const initialState: ArticlesReducer = {
   articles: [],
   loading: false,
   source: null,
+  authors: null,
 };
 
 export default function articlesReducer(
@@ -22,6 +24,9 @@ export default function articlesReducer(
       return {
         ...state,
         articles: payload,
+        authors: payload.map((item: any) => {
+          return { id: item.author, text: item.author, value: item.author };
+        }),
       };
     case SEARCH_ARTICLES:
       return {
@@ -31,7 +36,14 @@ export default function articlesReducer(
     case GET_SOURCE:
       return {
         ...state,
-        source: payload,
+        source: [
+          {
+            id: 'The New York Times',
+            text: 'The New York Times',
+            value: 'The New York Times',
+          },
+          ...payload,
+        ],
       };
     case LOADING:
       return {

@@ -5,6 +5,15 @@ export interface OptionsType {
   value: string;
 }
 
+export type Filter = {
+  from: string | null;
+  to: string | null;
+  // category: string;
+  source: string;
+  filterNewApisString: string;
+  filterNewYorkString: string;
+};
+
 export const OptionsCategory: OptionsType[] = [
   {
     id: ulid(),

@@ -11,9 +11,9 @@ const SearchArticles = (props: Props) => {
   const { search, handleSearchValue } = useContext(HomeContext);
   return (
     <TextInputComp
-      value={search}
+      value={isEmpty(search) ? search : search.split('=')[1]}
       handleChange={handleSearchValue}
-      handleCclickIcon={() => handleSearchValue({ target: { value: '' } })}
+      handleClickIcon={() => handleSearchValue({ target: { value: '' } })}
       icon={isEmpty(search) ? <SearchIcon /> : <CloseIcon />}
       label="Search"
     />

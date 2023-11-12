@@ -1,8 +1,6 @@
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-// import TableWrapperComp from '../../coreUI/tableComp/TableWrapperComp';
 import SearchArticles from './SearchArticles';
-// import FIlterArticles from './FIlterArticles';
 import CardComp from '../../coreUI/cardComp/CardComp';
 import { useSelector, shallowEqual } from 'react-redux';
 import { ArticlesSelector } from '../../redux/articles/selector';
@@ -14,6 +12,7 @@ const ArticlesItems = (props: Props) => {
     (state: any) => ArticlesSelector(state).articles,
     shallowEqual
   );
+
   return (
     <Grid item container xs={12} spacing={3} sx={{ mb: '2%' }}>
       <Grid item xs={12}>

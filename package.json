@@ -9,12 +9,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "cypress": "cypress open",
-    "e2e": "cypress open --e2e",
-    "e2e:headless": "cypress run --e2e",
-    "component": "cypress open --component",
-    "component:headless": "cypress run --component"
+    "lint": "next lint"
   },
   "dependencies": {
     "@emotion/cache": "latest",
@@ -28,6 +23,7 @@
     "@reduxjs/toolkit": "^1.9.7",
     "axios": "^1.4.0",
     "lodash": "^4.17.21",
+    "moment": "^2.29.4",
     "next": "latest",
     "next-i18next": "^14.0.0",
     "react": "latest",
@@ -43,7 +39,6 @@
     "@types/lodash": "^4.14.195",
     "@types/node": "latest",
     "@types/react": "latest",
-    "cypress": "^12.15.0",
     "eslint": "latest",
     "eslint-config-next": "latest",
     "sass": "^1.63.6",
