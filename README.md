@@ -8,7 +8,6 @@
 - Material UI => for ui design
 - Redux => for global state managment
 - i18n => for Multi language
-- cypress => for e2e testing and unit testing
 
 ## How to use
 
@@ -30,3 +29,15 @@ docker compose up --build
 ```sh
 docker compose down --remove-orphans --rmi "all"
 ```
+
+## you will need this env to use the api
+
+# NewsAPI
+
+NEXT_PUBLIC_NEWS_APIS=
+NEXT_PUBLIC_BASE_URL_NEWS_API=https://newsapi.org/v2/
+
+# New York Times
+
+NEXT_PUBLIC_NEW_YORK_KEY=
+NEXT_PUBLIC_BASE_URL_NEW_YORK=https://api.nytimes.com/svc/
