@@ -34,10 +34,14 @@ docker compose down --remove-orphans --rmi "all"
 
 # NewsAPI
 
+```sh
 NEXT_PUBLIC_NEWS_APIS=
 NEXT_PUBLIC_BASE_URL_NEWS_API=https://newsapi.org/v2/
+```
 
 # New York Times
 
+```sh
 NEXT_PUBLIC_NEW_YORK_KEY=
 NEXT_PUBLIC_BASE_URL_NEW_YORK=https://api.nytimes.com/svc/
+```
